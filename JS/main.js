@@ -5,12 +5,23 @@ function initMenuResponsive() {
     if (navbarToggle && navbarMenu) {
         navbarToggle.addEventListener('click', function() {
             navbarMenu.classList.toggle('active');
+            navbarToggle.classList.toggle('active');
         });
         
+        // Cerrar menú al hacer clic en un enlace
         document.querySelectorAll('.navbar-link, .navbar-btn').forEach(link => {
             link.addEventListener('click', () => {
                 navbarMenu.classList.remove('active');
+                navbarToggle.classList.remove('active');
             });
+        });
+        
+        // Cerrar menú al hacer clic fuera
+        document.addEventListener('click', (e) => {
+            if (!navbarToggle.contains(e.target) && !navbarMenu.contains(e.target)) {
+                navbarMenu.classList.remove('active');
+                navbarToggle.classList.remove('active');
+            }
         });
     }
 }
