@@ -45,56 +45,76 @@ function initReadingProgressBar() {
 function initAnimatedCounters() {
     const counters = document.querySelectorAll('.counter');
     const statsSection = document.querySelector('.stats-section');
+    
     if (!statsSection || counters.length === 0) return;
 
-    let hasAnimated = false;
+    // Almacenar los valores objetivo de cada contador
+    const objetivos = Array.from(counters).map(counter => {
+        // Obtener el valor objetivo del atributo data-target o del texto
+        const targetValue = counter.getAttribute('data-target') || counter.textContent.trim();
+        // Inicializar el contador en 0
+        counter.textContent = '0';
+        counter.setAttribute('data-target', targetValue);
+        return parseInt(targetValue) || 0;
+    });
 
-    function animateCounter(counter) {
-        const target = parseInt(counter.getAttribute('data-target')) || 0;
-        const duration = 1500; // ms
-        const startTime = performance.now();
-        const startVal = 0;
+    let animado = false;
 
-        function tick(now) {
-            const progress = Math.min((now - startTime) / duration, 1);
-            const eased = 1 - Math.pow(1 - progress, 3); // easeOutCubic
-            const value = Math.floor(startVal + (target - startVal) * eased);
-            counter.textContent = value;
-            if (progress < 1) {
-                requestAnimationFrame(tick);
-            } else {
-                counter.textContent = target;
-            }
-        }
-        requestAnimationFrame(tick);
+    function animarContadores() {
+        if (animado) return;
+        animado = true;
+        
+        counters.forEach((counter, index) => {
+            const objetivo = objetivos[index];
+            if (!objetivo) return;
+            
+            let actual = 0;
+            const duracion = 2500; // 2.5 segundos
+            const intervalo = 20; // Más suave con intervalos más cortos
+            const pasos = duracion / intervalo;
+            const incremento = objetivo / pasos;
+            
+            const timer = setInterval(() => {
+                actual += incremento;
+                if (actual >= objetivo) {
+                    counter.textContent = objetivo;
+                    clearInterval(timer);
+                } else {
+                    counter.textContent = Math.floor(actual);
+                }
+            }, intervalo);
+        });
     }
 
-    function start() {
-        if (hasAnimated) return;
-        hasAnimated = true;
-        counters.forEach(animateCounter);
-    }
-
+    // Usar Intersection Observer API para mejor detección de visibilidad
     if ('IntersectionObserver' in window) {
-        const observer = new IntersectionObserver((entries, obs) => {
+        const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    start();
-                    obs.disconnect();
+                if (entry.isIntersecting && !animado) {
+                    animarContadores();
+                    observer.unobserve(entry.target);
                 }
             });
-        }, { root: null, threshold: 0.25 });
+        }, {
+            threshold: 0.3, // Activar cuando el 30% de la sección sea visible
+            rootMargin: '0px'
+        });
+        
         observer.observe(statsSection);
     } else {
-        // Fallback: comprobar en load y en scroll
-        function check() {
+        // Fallback para navegadores antiguos
+        function verificarVisibilidad() {
             const rect = statsSection.getBoundingClientRect();
-            if (rect.top < window.innerHeight * 0.75 && rect.bottom > 0) start();
+            const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+            if (isVisible && !animado) {
+                animarContadores();
+                window.removeEventListener('scroll', verificarVisibilidad);
+            }
         }
-        window.addEventListener('scroll', check, { passive: true });
-        window.addEventListener('load', check);
-        // Comprobación inmediata por si ya está visible al iniciar
-        check();
+        
+        window.addEventListener('scroll', verificarVisibilidad);
+        window.addEventListener('load', verificarVisibilidad);
+        verificarVisibilidad();
     }
 }
 
