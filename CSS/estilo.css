@@ -63,8 +63,7 @@
 }
 
 html {
-    scroll-behavior: smooth;           
-    font-size: 13.3px;                
+    scroll-behavior: smooth;                       
     scroll-padding-top: 80px;         
 }
 
