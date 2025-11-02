@@ -82,6 +82,25 @@ body {
     font-weight: 400;                 
     opacity: 0;
     animation: fadeInBody 0.8s ease-out 0.1s forwards;
+    width: 100%;
+    max-width: 100vw;
+    position: relative;
+}
+
+@media (max-width: 768px) {
+    body {
+        overflow-x: hidden;
+        width: 100%;
+    }
+    
+    * {
+        max-width: 100%;
+    }
+    
+    img, video, iframe {
+        max-width: 100% !important;
+        height: auto !important;
+    }
 }
 
 @keyframes fadeInBody {
@@ -186,6 +205,15 @@ img {
     max-width: 100%;                  
     height: auto;
     display: block;
+    width: 100%;
+    object-fit: cover;
+}
+
+@media (max-width: 480px) {
+    img {
+        max-width: 100%;
+        width: 100%;
+    }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -329,30 +357,75 @@ img {
 }
 
 @media (max-width: 768px) {
+    .navbar-container {
+        padding: var(--spacing-sm) var(--spacing-md);
+        min-height: 60px;
+    }
+    
+    .navbar-logo {
+        font-size: 1.4rem;
+        gap: var(--spacing-xs);
+    }
+    
+    .navbar-logo i {
+        font-size: 1.2rem;
+    }
+    
     .navbar-toggle {
         display: flex;
+        z-index: 1001;
     }
     
     .navbar-menu {
-        position: absolute;
-        top: 100%;
+        position: fixed;
+        top: 60px;
         left: 0;
         right: 0;
         flex-direction: column;
         background: var(--gradient-primary);
         padding: var(--spacing-lg);
         gap: var(--spacing-md);
-        transform: translateY(-100%);
+        transform: translateX(-100%);
         opacity: 0;
         visibility: hidden;
         transition: all var(--transition-normal);
         box-shadow: var(--shadow-lg);
+        max-height: calc(100vh - 60px);
+        overflow-y: auto;
     }
     
     .navbar-menu.active {
-        transform: translateY(0);
+        transform: translateX(0);
         opacity: 1;
         visibility: visible;
+    }
+    
+    .navbar-item {
+        width: 100%;
+    }
+    
+    .navbar-link,
+    .navbar-btn {
+        width: 100%;
+        text-align: center;
+        padding: var(--spacing-sm) var(--spacing-md);
+        display: block;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar-container {
+        padding: var(--spacing-xs) var(--spacing-sm);
+        min-height: 55px;
+    }
+    
+    .navbar-logo {
+        font-size: 1.2rem;
+    }
+    
+    .navbar-menu {
+        top: 55px;
+        max-height: calc(100vh - 55px);
     }
 }
 
@@ -1135,6 +1208,21 @@ img {
     box-shadow: var(--shadow-sm);
     position: relative;
     overflow: hidden;
+    width: 100%;
+    max-width: 100%;
+}
+
+@media (max-width: 768px) {
+    .Viajes {
+        padding: var(--spacing-md);
+    }
+}
+
+@media (max-width: 480px) {
+    .Viajes {
+        padding: var(--spacing-sm);
+        border-radius: var(--radius-md);
+    }
 }
 
 .Viajes::before {
@@ -1181,6 +1269,16 @@ img {
     width: 100%;
     height: 100%;
     position: relative;
+    max-width: 100%;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+}
+
+@media (max-width: 480px) {
+    .viaje-item {
+        gap: var(--spacing-sm);
+    }
 }
 
 .viaje-plane-icon {
@@ -1223,11 +1321,32 @@ img {
     border-radius: var(--radius-md);
     object-fit: cover;
     transition: var(--transition-slow);
+    max-width: 100%;
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .gallery_img {
+        height: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery_img {
+        height: 180px;
+    }
 }
 
 .Viajes:hover .gallery_img {
     transform: scale(1.08) rotate(-1deg);
     filter: brightness(1.1) contrast(1.05);
+}
+
+@media (hover: none) {
+    .Viajes:hover .gallery_img {
+        transform: none;
+        filter: none;
+    }
 }
 
 .info-pais {
@@ -1237,6 +1356,7 @@ img {
     flex: 1;
     width: 100%;
     gap: var(--spacing-sm);
+    overflow: hidden;
 }
 
 .info-pais h3 {
@@ -1245,6 +1365,14 @@ img {
     font-size: clamp(1.25rem, 2vw, 1.5rem);
     font-weight: 700;
     transition: color var(--transition-normal);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+@media (max-width: 480px) {
+    .info-pais h3 {
+        font-size: 1.1rem;
+    }
 }
 
 .Viajes:hover .info-pais h3 {
@@ -1257,6 +1385,16 @@ img {
     line-height: 1.7;
     flex: 1;
     margin-bottom: var(--spacing-md);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    overflow: hidden;
+}
+
+@media (max-width: 480px) {
+    .info-pais p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
 }
 
 .precio {
@@ -1375,7 +1513,42 @@ img {
     max-width: 1400px;
     margin-left: auto;
     margin-right: auto;
-    grid-auto-rows: 1fr;  
+    grid-auto-rows: 1fr;
+    padding: 0 var(--spacing-sm);
+}
+
+@media (max-width: 1024px) {
+    .reseñas-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-lg);
+    }
+}
+
+@media (max-width: 768px) {
+    .reseñas-section {
+        padding: var(--spacing-xl) var(--spacing-md);
+    }
+    
+    .reseñas-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+        padding: 0;
+    }
+    
+    .container-reseñas h2 {
+        font-size: clamp(1.5rem, 5vw, 2.5rem);
+        margin-bottom: var(--spacing-lg);
+    }
+}
+
+@media (max-width: 480px) {
+    .reseñas-section {
+        padding: var(--spacing-lg) var(--spacing-sm);
+    }
+    
+    .reseñas-grid {
+        gap: var(--spacing-sm);
+    }
 }
 
 .reseña-card {
@@ -1389,7 +1562,51 @@ img {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    min-height: 320px;  
+    min-height: 320px;
+    overflow: hidden;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+@media (max-width: 768px) {
+    .reseña-card {
+        padding: var(--spacing-lg);
+        min-height: auto;
+    }
+    
+    .reseña-card p {
+        font-size: 0.95rem;
+        padding: 0;
+    }
+    
+    .reseña-card p::before,
+    .reseña-card p::after {
+        font-size: 2rem;
+    }
+    
+    .estrellas {
+        font-size: 1.2rem;
+    }
+    
+    .autor-reseña strong {
+        font-size: 1rem;
+    }
+    
+    .autor-reseña span {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .reseña-card {
+        padding: var(--spacing-md);
+    }
+    
+    .reseña-card p {
+        font-size: 0.9rem;
+        line-height: 1.6;
+        margin-bottom: var(--spacing-md);
+    }
 }
 
 .reseña-card::before {
