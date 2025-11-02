@@ -65,7 +65,10 @@
 html {
     scroll-behavior: smooth;           
     font-size: 13.3px;                
-    scroll-padding-top: 80px;         
+    scroll-padding-top: 80px;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
 }
 
 
@@ -470,6 +473,100 @@ img {
     position: relative;
     z-index: 2;
     align-items: center;
+}
+
+@media (max-width: 1024px) {
+    .hero-content {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+        padding: 0 var(--spacing-md);
+    }
+    
+    .hero-text {
+        text-align: center;
+        order: 2;
+    }
+    
+    .hero-image {
+        order: 1;
+    }
+    
+    .hero-section-home {
+        min-height: auto;
+        padding: var(--spacing-xl) 0;
+    }
+    
+    .hero-img {
+        height: 400px;
+    }
+    
+    .carrusel {
+        height: 350px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-content {
+        padding: 0 var(--spacing-sm);
+        gap: var(--spacing-md);
+    }
+    
+    .hero-text h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-text h2 {
+        font-size: 1.8rem;
+    }
+    
+    .hero-text p {
+        font-size: 1rem;
+    }
+    
+    .hero-img {
+        height: 300px;
+    }
+    
+    .carrusel {
+        height: 280px;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+    
+    .hero-buttons .btn-primary,
+    .hero-buttons .btn-secondary {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-section-home {
+        min-height: auto;
+        padding: var(--spacing-lg) 0;
+    }
+    
+    .hero-text h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-text h2 {
+        font-size: 1.5rem;
+    }
+    
+    .hero-text p {
+        font-size: 0.95rem;
+    }
+    
+    .hero-img {
+        height: 250px;
+    }
+    
+    .carrusel {
+        height: 230px;
+    }
 }
 
 .carrusel {
@@ -1009,6 +1106,21 @@ img {
     position: relative;
     z-index: 10;  
     background: var(--color-light);  
+}
+
+@media (max-width: 768px) {
+    .contenido-principal {
+        grid-template-columns: 1fr;
+        padding: var(--spacing-lg) var(--spacing-md);
+        gap: var(--spacing-lg);
+    }
+}
+
+@media (max-width: 480px) {
+    .contenido-principal {
+        padding: var(--spacing-md) var(--spacing-sm);
+        gap: var(--spacing-md);
+    }
 }
 
 .Viajes {
@@ -2147,6 +2259,77 @@ textarea.form-control {
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
 }
 
+/* Responsive para stats-section */
+@media (max-width: 1024px) {
+    .stats-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-lg);
+    }
+    
+    .stat-item h3 {
+        font-size: 3rem;
+    }
+    
+    .stat-item i {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .stats-section {
+        padding: var(--spacing-xl) var(--spacing-md);
+    }
+    
+    .stats-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-md);
+    }
+    
+    .stat-item {
+        padding: var(--spacing-md);
+    }
+    
+    .stat-item h3 {
+        font-size: 2.5rem;
+    }
+    
+    .stat-item i {
+        font-size: 2rem;
+        margin-bottom: var(--spacing-sm);
+    }
+    
+    .stat-item p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .stats-section {
+        padding: var(--spacing-lg) var(--spacing-sm);
+    }
+    
+    .stats-container {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+    
+    .stat-item {
+        padding: var(--spacing-lg) var(--spacing-md);
+    }
+    
+    .stat-item h3 {
+        font-size: 2.2rem;
+    }
+    
+    .stat-item i {
+        font-size: 1.8rem;
+    }
+    
+    .stat-item p {
+        font-size: 0.95rem;
+    }
+}
+
 .inspiracion-section {
     position: relative;
     height: 600px;
@@ -2160,6 +2343,40 @@ textarea.form-control {
     background-attachment: fixed;     
     overflow: hidden;
     z-index: 10;  
+}
+
+@media (max-width: 768px) {
+    .inspiracion-section {
+        height: 500px;
+        background-attachment: scroll;
+    }
+    
+    .inspiracion-content h2 {
+        font-size: 2.5rem;
+    }
+    
+    .inspiracion-content p {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .inspiracion-section {
+        height: 400px;
+        padding: var(--spacing-lg);
+    }
+    
+    .inspiracion-content {
+        padding: var(--spacing-md);
+    }
+    
+    .inspiracion-content h2 {
+        font-size: 2rem;
+    }
+    
+    .inspiracion-content p {
+        font-size: 1rem;
+    }
 }
 
 .inspiracion-overlay {
