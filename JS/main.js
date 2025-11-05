@@ -1,9 +1,3 @@
-/**
- * Inicializa el menú responsive del header.
- * - Alterna la visibilidad del contenedor `.navbar-menu` en móviles
- * - Anima el botón hamburguesa (`.navbar-toggle`)
- * - Cierra el menú al clicar fuera o en cualquier enlace de navegación
- */
 function initMenuResponsive() {
     const navbarToggle = document.querySelector('.navbar-toggle');
     const navbarMenu = document.querySelector('.navbar-menu');
@@ -14,7 +8,6 @@ function initMenuResponsive() {
             navbarToggle.classList.toggle('active');
         });
         
-        // Cerrar menú al hacer clic en un enlace
         document.querySelectorAll('.navbar-link, .navbar-btn').forEach(link => {
             link.addEventListener('click', () => {
                 navbarMenu.classList.remove('active');
@@ -22,7 +15,6 @@ function initMenuResponsive() {
             });
         });
         
-        // Cerrar menú al hacer clic fuera
         document.addEventListener('click', (e) => {
             if (!navbarToggle.contains(e.target) && !navbarMenu.contains(e.target)) {
                 navbarMenu.classList.remove('active');
@@ -32,15 +24,9 @@ function initMenuResponsive() {
     }
 }
 
-/**
- * Efectos globales de scroll.
- * - Muestra/oculta el botón "scroll-to-top" según el desplazamiento
- * - Maneja el scroll suave hacia arriba
- */
 function initScrollEffects() {
     const scrollToTopBtn = document.querySelector('.scroll-to-top') || document.getElementById('scrollToTopBtn');
     
-    // Mostrar/ocultar botón según scroll
     window.addEventListener('scroll', () => {
         if (scrollToTopBtn) {
             if (window.pageYOffset > 300) {
@@ -51,16 +37,13 @@ function initScrollEffects() {
         }
     });
     
-    // Función para scroll suave hacia arriba
     function scrollToTop() {
-        // Método moderno con smooth behavior
         if ('scrollBehavior' in document.documentElement.style) {
             window.scrollTo({
                 top: 0,
                 behavior: 'smooth'
             });
         } else {
-            // Fallback para navegadores antiguos
             const scrollStep = -window.scrollY / (500 / 15);
             const scrollInterval = setInterval(() => {
                 if (window.scrollY !== 0) {
@@ -72,7 +55,6 @@ function initScrollEffects() {
         }
     }
     
-    // Añadir event listener al botón
     if (scrollToTopBtn) {
         scrollToTopBtn.addEventListener('click', function(e) {
             e.preventDefault();
@@ -83,10 +65,6 @@ function initScrollEffects() {
 
 
 
-/**
- * Barra de progreso de lectura fija en el tope de la página.
- * Calcula el porcentaje scrolleado respecto a la altura total del documento.
- */
 function initReadingProgressBar() {
     const progressBar = document.querySelector('.reading-progress-bar');
     if (progressBar) {
@@ -98,22 +76,14 @@ function initReadingProgressBar() {
     }
 }
 
-/**
- * Contadores animados de la sección de estadísticas.
- * - Lee el valor objetivo desde `data-target`
- * - Anima una única vez cuando la sección entra en viewport (IntersectionObserver)
- */
 function initAnimatedCounters() {
     const counters = document.querySelectorAll('.counter');
     const statsSection = document.querySelector('.stats-section');
     
     if (!statsSection || counters.length === 0) return;
 
-    // Almacenar los valores objetivo de cada contador
     const objetivos = Array.from(counters).map(counter => {
-        // Obtener el valor objetivo del atributo data-target o del texto
         const targetValue = counter.getAttribute('data-target') || counter.textContent.trim();
-        // Inicializar el contador en 0
         counter.textContent = '0';
         counter.setAttribute('data-target', targetValue);
         return parseInt(targetValue) || 0;
@@ -121,7 +91,6 @@ function initAnimatedCounters() {
 
     let animado = false;
 
-    /** Dispara la animación numérica de todos los contadores visibles. */
     function animarContadores() {
         if (animado) return;
         animado = true;
@@ -131,8 +100,8 @@ function initAnimatedCounters() {
             if (!objetivo) return;
             
             let actual = 0;
-            const duracion = 2500; // 2.5 segundos
-            const intervalo = 20; // Más suave con intervalos más cortos
+            const duracion = 2500;
+            const intervalo = 20;
             const pasos = duracion / intervalo;
             const incremento = objetivo / pasos;
             
@@ -148,7 +117,6 @@ function initAnimatedCounters() {
         });
     }
 
-    // Usar Intersection Observer API para mejor detección de visibilidad
     if ('IntersectionObserver' in window) {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -158,13 +126,12 @@ function initAnimatedCounters() {
                 }
             });
         }, {
-            threshold: 0.3, // Activar cuando el 30% de la sección sea visible
+            threshold: 0.3,
             rootMargin: '0px'
         });
         
         observer.observe(statsSection);
     } else {
-        // Fallback para navegadores sin IntersectionObserver
         function verificarVisibilidad() {
             const rect = statsSection.getBoundingClientRect();
             const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
@@ -180,17 +147,10 @@ function initAnimatedCounters() {
     }
 }
 
-/**
- * Carrusel de la portada.
- * - Autoplay con reinicio al interactuar
- * - Navegación por flechas e indicadores
- * - Mantiene el índice actual en cierre de ciclo
- */
 function initCarousel() {
     let indiceSlide = 0;
     let autoPlayInterval;
     
-    /** Cambia a la diapositiva siguiente/anterior. */
     function moverSlide(direccion) {
         const slides = document.querySelectorAll('.slide');
         const indicadores = document.querySelectorAll('.indicador');
@@ -208,7 +168,6 @@ function initCarousel() {
         reiniciarAutoPlay();
     }
 
-    /** Ir a un índice de slide concreto (clic en indicador). */
     function irASlide(indice) {
         const slides = document.querySelectorAll('.slide');
         const indicadores = document.querySelectorAll('.indicador');
@@ -226,19 +185,16 @@ function initCarousel() {
         reiniciarAutoPlay();
     }
 
-    /** Inicia el autoplay del carrusel. */
     function iniciarAutoPlay() {
         autoPlayInterval = setInterval(() => {
             moverSlide(1);
         }, 5000);
     }
 
-    /** Detiene el autoplay del carrusel. */
     function detenerAutoPlay() {
         clearInterval(autoPlayInterval);
     }
 
-    /** Reinicia el autoplay tras interacción del usuario. */
     function reiniciarAutoPlay() {
         detenerAutoPlay();
         iniciarAutoPlay();
@@ -266,10 +222,6 @@ function initCarousel() {
     }
 }
 
-/**
- * Manejador simple del formulario de newsletter (demo client-side).
- * Sustituir por integración real si se conecta a backend.
- */
 function initNewsletterForm() {
     const newsletterForm = document.getElementById('newsletterForm');
     if (newsletterForm) {
@@ -282,12 +234,6 @@ function initNewsletterForm() {
     }
 }
 
-/**
- * Comportamiento del formulario de reserva.
- * - Evita envío real
- * - Muestra mensaje de éxito
- * - Ajusta fecha mínima al día actual
- */
 function initReservaForm() {
     const formReserva = document.getElementById('formReserva');
     if (formReserva) {
@@ -308,12 +254,6 @@ function initReservaForm() {
     }
 }
 
-/**
- * Chatbot interactivo.
- * - Abre/cierra la ventana de chat
- * - Maneja mensajes del usuario y respuestas del bot
- * - Respuestas predefinidas relacionadas con viajes nórdicos
- */
 function initChatbot() {
     const chatbotToggle = document.getElementById('chatbot-toggle');
     const chatbotWindow = document.getElementById('chatbot-window');
@@ -330,7 +270,6 @@ function initChatbot() {
     
     let isOpen = false;
     
-    // Respuestas predefinidas del bot
     const botResponses = {
         saludo: [
             "¡Hola! 👋 Soy el asistente virtual de Nordika. ¿En qué puedo ayudarte hoy?",
@@ -478,28 +417,21 @@ function initChatbot() {
         ]
     };
     
-    // Función para obtener respuesta del bot con lógica mejorada
     function getBotResponse(message) {
         const msg = message.toLowerCase().trim();
         
-        // Eliminar acentos para mejor matching
         const msgNormalized = msg.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
         
-        // Saludos (más flexibles)
         if (msg.match(/^(hola|hi|hey|buenos dias|buenas tardes|buenas noches|saludos|que tal|como estas|good morning|good afternoon)/i) || 
             msgNormalized.match(/^(hola|hi|hey|buenos dias|buenas tardes|buenas noches|saludos|que tal|como estas)/i)) {
             return botResponses.saludo[Math.floor(Math.random() * botResponses.saludo.length)];
         }
         
-        // Despedidas (más variaciones)
         if (msg.match(/(adios|chau|hasta luego|bye|nos vemos|gracias|muchas gracias|thank you|chao|hasta pronto)/i) ||
             msgNormalized.match(/(adios|chau|hasta luego|bye|nos vemos|gracias|muchas gracias|chao|hasta pronto)/i)) {
             return botResponses.despedida[Math.floor(Math.random() * botResponses.despedida.length)];
         }
         
-        // CIUDADES ESPECÍFICAS (prioridad alta - antes de países generales)
-        
-        // Ciudades de Suecia
         if (msg.match(/\b(estocolmo|stockholm)\b/i) || msgNormalized.match(/\b(estocolmo|stockholm)\b/i)) {
             return botResponses.estocolmo[Math.floor(Math.random() * botResponses.estocolmo.length)];
         }
@@ -513,14 +445,13 @@ function initChatbot() {
             return botResponses.visby[Math.floor(Math.random() * botResponses.visby.length)];
         }
         
-        // Ciudades de Noruega
         if (msg.match(/\b(oslo)\b/i) || msgNormalized.match(/\b(oslo)\b/i)) {
             return botResponses.oslo[Math.floor(Math.random() * botResponses.oslo.length)];
         }
         if (msg.match(/\b(bergen)\b/i) || msgNormalized.match(/\b(bergen)\b/i)) {
             return botResponses.bergen[Math.floor(Math.random() * botResponses.bergen.length)];
         }
-        if (msg.match(/\b(tromso|tromsø)\b/i) || msgNormalized.match(/\b(tromso|tromso)\b/i)) {
+        if (msg.match(/\b(tromso|tromsø)\b/i) || msgNormalized.match(/\b(tromso)\b/i)) {
             return botResponses.tromso[Math.floor(Math.random() * botResponses.tromso.length)];
         }
         if (msg.match(/\b(geiranger)\b/i) || msgNormalized.match(/\b(geiranger)\b/i)) {
@@ -530,7 +461,6 @@ function initChatbot() {
             return botResponses.trondheim[Math.floor(Math.random() * botResponses.trondheim.length)];
         }
         
-        // Ciudades de Dinamarca
         if (msg.match(/\b(copenhague|copenhagen)\b/i) || msgNormalized.match(/\b(copenhague|copenhagen)\b/i)) {
             return botResponses.copenhague[Math.floor(Math.random() * botResponses.copenhague.length)];
         }
@@ -544,7 +474,6 @@ function initChatbot() {
             return botResponses.legoland[Math.floor(Math.random() * botResponses.legoland.length)];
         }
         
-        // Ciudades de Finlandia
         if (msg.match(/\b(helsinki)\b/i) || msgNormalized.match(/\b(helsinki)\b/i)) {
             return botResponses.helsinki[Math.floor(Math.random() * botResponses.helsinki.length)];
         }
@@ -558,7 +487,6 @@ function initChatbot() {
             return botResponses.turku[Math.floor(Math.random() * botResponses.turku.length)];
         }
         
-        // Ciudades y lugares de Islandia
         if (msg.match(/\b(reikiavik|reykjavik)\b/i) || msgNormalized.match(/\b(reikiavik|reykjavik)\b/i)) {
             return botResponses.reikiavik[Math.floor(Math.random() * botResponses.reikiavik.length)];
         }
@@ -575,73 +503,59 @@ function initChatbot() {
             return botResponses.costaSur[Math.floor(Math.random() * botResponses.costaSur.length)];
         }
         
-        // PAÍSES GENERALES (después de ciudades específicas)
-        
-        // Suecia específico
         if (msg.match(/\b(suecia|sueco|suecos)\b/i) ||
             msgNormalized.match(/\b(suecia|sueco|suecos)\b/i)) {
             return botResponses.suecia[Math.floor(Math.random() * botResponses.suecia.length)];
         }
         
-        // Noruega específico
         if (msg.match(/\b(noruega|fiordos|fiordo|noruego|noruegos)\b/i) ||
             msgNormalized.match(/\b(noruega|fiordos|fiordo|noruego|noruegos)\b/i)) {
             return botResponses.noruega[Math.floor(Math.random() * botResponses.noruega.length)];
         }
         
-        // Dinamarca específico
         if (msg.match(/\b(dinamarca|danes|daneses)\b/i) ||
             msgNormalized.match(/\b(dinamarca|danes|daneses)\b/i)) {
             return botResponses.dinamarca[Math.floor(Math.random() * botResponses.dinamarca.length)];
         }
         
-        // Finlandia específico
         if (msg.match(/\b(finlandia|finlandes|finlandeses)\b/i) ||
             msgNormalized.match(/\b(finlandia|finlandes|finlandeses)\b/i)) {
             return botResponses.finlandia[Math.floor(Math.random() * botResponses.finlandia.length)];
         }
         
-        // Islandia específico
         if (msg.match(/\b(islandia|islandes|islandeses)\b/i) ||
             msgNormalized.match(/\b(islandia|islandes|islandeses)\b/i)) {
             return botResponses.islandia[Math.floor(Math.random() * botResponses.islandia.length)];
         }
         
-        // Aurora boreal (más palabras clave)
         if (msg.match(/\b(aurora|boreal|northern lights|luces del norte|luces boreales|aurora polar|northern light)\b/i) ||
             msgNormalized.match(/\b(aurora|boreal|northern lights|luces del norte|luces boreales|aurora polar|northern light)\b/i)) {
             return botResponses.aurora[Math.floor(Math.random() * botResponses.aurora.length)];
         }
         
-        // Precios (más variaciones)
         if (msg.match(/\b(precio|precios|cost|cuanto|cuánto|cuesta|tarifa|tarifas|pago|pagar|reservar|reserva|paquete|paquetes|oferta|ofertas|descuento|descuentos|barato|cara|caro)\b/i) ||
             msgNormalized.match(/\b(precio|precios|cost|cuanto|cuesta|tarifa|tarifas|pago|pagar|reservar|reserva|paquete|paquetes|oferta|ofertas|descuento|descuentos|barato|cara|caro)\b/i)) {
             return botResponses.precio[Math.floor(Math.random() * botResponses.precio.length)];
         }
         
-        // Contacto (más variaciones)
-        if (msg.match(/\b(contacto|contactar|email|whatsapp|telefono|telefono|comunicar|hablar|llamar|escribir|mensaje|mensajear|redes sociales|facebook|instagram)\b/i) ||
-            msgNormalized.match(/\b(contacto|contactar|email|whatsapp|telefono|telefono|comunicar|hablar|llamar|escribir|mensaje|mensajear|redes sociales|facebook|instagram)\b/i)) {
+        if (msg.match(/\b(contacto|contactar|email|whatsapp|telefono|comunicar|hablar|llamar|escribir|mensaje|mensajear|redes sociales|facebook|instagram)\b/i) ||
+            msgNormalized.match(/\b(contacto|contactar|email|whatsapp|telefono|comunicar|hablar|llamar|escribir|mensaje|mensajear|redes sociales|facebook|instagram)\b/i)) {
             return botResponses.contacto[Math.floor(Math.random() * botResponses.contacto.length)];
         }
         
-        // Información general sobre Nordika
         if (msg.match(/\b(quienes son|que es nordika|nordika|informacion|información|agencia|sobre ustedes|sobre la empresa)\b/i) ||
             msgNormalized.match(/\b(quienes son|que es nordika|nordika|informacion|informacion|agencia|sobre ustedes|sobre la empresa)\b/i)) {
             return botResponses.info[Math.floor(Math.random() * botResponses.info.length)];
         }
         
-        // Destinos generales (como fallback si no hay país específico)
         if (msg.match(/\b(destino|destinos|pais|paises|viaje|viajar|viajes|turismo|turista|nordico|nordicos|escandinavia|escandinavo)\b/i) ||
             msgNormalized.match(/\b(destino|destinos|pais|paises|viaje|viajar|viajes|turismo|turista|nordico|nordicos|escandinavia|escandinavo)\b/i)) {
             return botResponses.destinos[Math.floor(Math.random() * botResponses.destinos.length)];
         }
         
-        // Respuesta por defecto
         return botResponses.default[Math.floor(Math.random() * botResponses.default.length)];
     }
     
-    // Función para añadir mensaje al chat
     function addMessage(text, isUser = false) {
         const messageDiv = document.createElement('div');
         messageDiv.className = `chatbot-message ${isUser ? 'user' : 'bot'}`;
@@ -660,7 +574,6 @@ function initChatbot() {
         chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
     }
     
-    // Función para abrir el chat
     function openChat(e) {
         if (e) e.stopPropagation();
         chatbotWindow.classList.add('chatbot-open');
@@ -668,7 +581,6 @@ function initChatbot() {
         chatbotToggle.style.display = 'none';
         isOpen = true;
         
-        // Asegurar que el botón de cerrar sea visible y clickeable
         if (chatbotClose) {
             chatbotClose.style.display = 'flex';
             chatbotClose.style.visibility = 'visible';
@@ -677,7 +589,6 @@ function initChatbot() {
             chatbotClose.style.zIndex = '10002';
         }
         
-        // Asegurar que el header sea visible
         const header = chatbotWindow.querySelector('.chatbot-header');
         if (header) {
             header.style.visibility = 'visible';
@@ -689,7 +600,6 @@ function initChatbot() {
             notification.style.display = 'none';
         }
         
-        // Mensaje de bienvenida si es la primera vez
         if (chatbotMessages.children.length === 0) {
             setTimeout(() => {
                 addMessage(getBotResponse('hola'));
@@ -699,56 +609,46 @@ function initChatbot() {
         chatbotInput.focus();
     }
     
-    // Función para cerrar el chat
     function closeChat(e) {
         if (e) {
             e.stopPropagation();
             e.preventDefault();
         }
         
-        // Cerrar la ventana
         chatbotWindow.classList.remove('chatbot-open');
         chatbotWindow.classList.add('chatbot-closed');
         
-        // Mostrar el botón toggle
         chatbotToggle.style.display = 'flex';
         chatbotToggle.style.visibility = 'visible';
         chatbotToggle.style.opacity = '1';
         
         isOpen = false;
         
-        // Asegurar que el input pierda el foco
         if (chatbotInput) {
             chatbotInput.blur();
         }
     }
     
-    // Hacer la función disponible globalmente como respaldo
     window.closeChatbot = closeChat;
     
-    // Función para enviar mensaje
     function sendMessage() {
         const message = chatbotInput.value.trim();
         if (!message) return;
         
-        // Añadir mensaje del usuario
         addMessage(message, true);
         chatbotInput.value = '';
         
-        // Simular delay de respuesta del bot
         setTimeout(() => {
             const response = getBotResponse(message);
             addMessage(response, false);
         }, 800);
     }
     
-    // Event listeners - Asegurar que funcionen correctamente
     chatbotToggle.addEventListener('click', function(e) {
         e.stopPropagation();
         openChat(e);
     });
     
-    // Múltiples formas de asegurar que el botón de cerrar funcione
     chatbotClose.addEventListener('click', function(e) {
         e.stopPropagation();
         e.preventDefault();
@@ -756,7 +656,6 @@ function initChatbot() {
         return false;
     });
     
-    // También con mousedown como respaldo
     chatbotClose.addEventListener('mousedown', function(e) {
         e.stopPropagation();
         e.preventDefault();
@@ -764,7 +663,6 @@ function initChatbot() {
         return false;
     });
     
-    // También con touchstart para móviles
     chatbotClose.addEventListener('touchstart', function(e) {
         e.stopPropagation();
         e.preventDefault();
@@ -772,7 +670,6 @@ function initChatbot() {
         return false;
     });
     
-    // Asegurar que el botón siempre sea clickeable
     chatbotClose.style.pointerEvents = 'auto';
     chatbotClose.style.cursor = 'pointer';
     
@@ -788,10 +685,8 @@ function initChatbot() {
         });
     }
     
-    // Prevenir que clicks dentro del chat se propaguen, EXCEPTO en el botón de cerrar
     if (chatbotWindow) {
         chatbotWindow.addEventListener('click', function(e) {
-            // No prevenir propagación si el click es en el botón de cerrar
             if (e.target !== chatbotClose && !chatbotClose.contains(e.target)) {
                 e.stopPropagation();
             }
@@ -799,7 +694,6 @@ function initChatbot() {
     }
 }
 
-/** Punto de entrada: inicializa todos los módulos cuando el DOM está listo. */
 document.addEventListener('DOMContentLoaded', function() {
     initMenuResponsive();
     initScrollEffects();
