@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Reserva tu viaje a los países nórdicos con Nordika. Completa el formulario y te contactaremos a la brevedad.">
+    <title>Reservar Viaje - Nordika</title>
+    <link rel="icon" type="image/png" href="../Imágenes/Nordika_logo.png">
+    
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    
+    <link rel="stylesheet" href="../CSS/estilo.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="../index.html" class="navbar-logo">
+                <i class="fas fa-snowflake"></i> Nordika
+            </a>
+            <button class="navbar-toggle" aria-label="Menú de navegación">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="navbar-menu">
+                <li class="navbar-item"><a href="../index.html#Destinos" class="navbar-link">Destinos</a></li>
+                <li class="navbar-item"><a href="../index.html#reseñas" class="navbar-link">Reseñas</a></li>
+                <li class="navbar-item"><a href="tour-escandinavia.html" class="navbar-link">Tours</a></li>
+                <li class="navbar-item"><a href="nosotros.html" class="navbar-link">Nosotros</a></li>
+                <li class="navbar-item"><a href="contacto.html" class="navbar-link">Contacto</a></li>
+                <li class="navbar-item"><a href="reservar.html" class="navbar-btn">Reservar</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    
+    <section class="hero-section hero-reserva">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Reserva tu Viaje Nórdico</h1>
+                <h2>Completa tus datos y te contactaremos</h2>
+                <p>Nuestro equipo revisará tu solicitud y te enviará una propuesta personalizada en menos de 24 horas.</p>
+            </div>
+        </div>
+        <div class="hero-overlay"></div>
+    </section>
+
+    
+    <section class="seccion-reserva seccion-padding">
+        <div class="reserva-container container-md">
+            <h2>Formulario de Reserva</h2>
+            <p class="mb-5">Completa la información y nos pondremos en contacto contigo</p>
+
+            <form id="formReserva" class="card-white">
+
+                
+                <div class="form-section">
+                    <h3 class="form-section-title">
+                        <i class="fas fa-user"></i> Datos Personales
+                    </h3>
+                    
+                    <div class="form-grid">
+                        <div>
+                            <label class="form-label">
+                                Nombre Completo <span class="form-label-required">*</span>
+                            </label>
+                            <input type="text" name="nombre" required class="form-input" placeholder="Ej: Juan Pérez">
+                        </div>
+                        
+                        <div>
+                            <label class="form-label">
+                                Email <span class="form-label-required">*</span>
+                            </label>
+                            <input type="email" name="email" required class="form-input" placeholder="tu@email.com">
+                        </div>
+                        
+                        <div>
+                            <label class="form-label">
+                                Teléfono <span class="form-label-required">*</span>
+                            </label>
+                            <input type="tel" name="telefono" required class="form-input" placeholder="+34 600 00 00 00">
+                        </div>
+                        
+                        <div>
+                            <label class="form-label">
+                                País de Residencia <span class="form-label-required">*</span>
+                            </label>
+                            <input type="text" name="pais" required class="form-input" placeholder="Ej: España">
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="form-section">
+                    <h3 class="form-section-title">
+                        <i class="fas fa-plane"></i> Detalles del Viaje
+                    </h3>
+                    
+                    <div class="form-grid">
+                        <div>
+                            <label class="form-label">
+                                Destino(s) de Interés <span class="form-label-required">*</span>
+                            </label>
+                            <select name="destino" required class="form-select">
+                                <option value="">Selecciona un destino</option>
+                                <optgroup label="Suecia">
+                                    <option value="Estocolmo">Estocolmo</option>
+                                    <option value="Gotemburgo">Gotemburgo</option>
+                                    <option value="Malmö">Malmö</option>
+                                    <option value="Kiruna">Kiruna</option>
+                                    <option value="Visby">Visby</option>
+                                </optgroup>
+                                <optgroup label="Dinamarca">
+                                    <option value="Copenhague">Copenhague</option>
+                                    <option value="Aarhus">Aarhus</option>
+                                    <option value="Odense">Odense</option>
+                                    <option value="Kronborg">Castillo de Kronborg</option>
+                                    <option value="Legoland">Legoland Billund</option>
+                                </optgroup>
+                                <optgroup label="Noruega">
+                                    <option value="Oslo">Oslo</option>
+                                    <option value="Bergen">Bergen</option>
+                                    <option value="Geiranger">Fiordo de Geiranger</option>
+                                    <option value="Tromsø">Tromsø</option>
+                                    <option value="Trondheim">Trondheim</option>
+                                </optgroup>
+                                <optgroup label="Finlandia">
+                                    <option value="Helsinki">Helsinki</option>
+                                    <option value="Rovaniemi">Rovaniemi</option>
+                                    <option value="Turku">Turku</option>
+                                    <option value="Tampere">Tampere</option>
+                                    <option value="Åland">Archipiélago de Åland</option>
+                                </optgroup>
+                                <optgroup label="Islandia">
+                                    <option value="Reykjavik">Reykjavik</option>
+                                    <option value="Círculo Dorado">Círculo Dorado</option>
+                                    <option value="Costa Sur">Costa Sur</option>
+                                    <option value="Blue Lagoon">Blue Lagoon</option>
+                                </optgroup>
+                                <optgroup label="Tours">
+                                    <option value="Tour Escandinavia">Tour Completo Escandinavia</option>
+                                    <option value="Personalizado">Viaje Personalizado</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="form-label">
+                                Número de Viajeros <span class="form-label-required">*</span>
+                            </label>
+                            <input type="number" name="viajeros" required min="1" max="20" class="form-input" placeholder="Ej: 2">
+                        </div>
+                        
+                        <div>
+                            <label class="form-label">
+                                Fecha Aproximada de Salida <span class="form-label-required">*</span>
+                            </label>
+                            <input type="date" name="fecha" required class="form-input">
+                        </div>
+                        
+                        <div>
+                            <label class="form-label">
+                                Duración Estimada (días)
+                            </label>
+                            <input type="number" name="duracion" min="1" max="30" class="form-input" placeholder="Ej: 7">
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="form-section">
+                    <h3 class="form-section-title">
+                        <i class="fas fa-euro-sign"></i> Presupuesto y Preferencias
+                    </h3>
+                    
+                    <div class="form-grid mb-3">
+                        <div>
+                            <label class="form-label">
+                                Presupuesto Aproximado por Persona
+                            </label>
+                            <select name="presupuesto" class="form-select">
+                                <option value="">Selecciona un rango</option>
+                                <option value="500-1000">€500 - €1,000</option>
+                                <option value="1000-1500">€1,000 - €1,500</option>
+                                <option value="1500-2000">€1,500 - €2,000</option>
+                                <option value="2000+">Más de €2,000</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="form-label">
+                                Tipo de Alojamiento Preferido
+                            </label>
+                            <select name="alojamiento" class="form-select">
+                                <option value="">Selecciona una opción</option>
+                                <option value="3estrellas">Hotel 3 estrellas</option>
+                                <option value="4estrellas">Hotel 4 estrellas</option>
+                                <option value="5estrellas">Hotel 5 estrellas / Lujo</option>
+                                <option value="boutique">Hotel Boutique</option>
+                                <option value="airbnb">Apartamento / Airbnb</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="form-label">
+                            Comentarios Adicionales o Preferencias Especiales
+                        </label>
+                        <textarea name="comentarios" rows="5" class="form-textarea" placeholder="Cuéntanos sobre tus intereses, actividades que te gustaría hacer, necesidades especiales, etc."></textarea>
+                    </div>
+                </div>
+
+                
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn-finalizar-form">
+                        Enviar Solicitud de Reserva
+                    </button>
+                    <p class="mt-2 text-light text-sm">
+                        <i class="fas fa-clock"></i> Responderemos en menos de 24 horas
+                    </p>
+                </div>
+            </form>
+
+            <div id="mensajeExito">
+                <i class="fas fa-check-circle"></i>
+                <h3>¡Solicitud Enviada con Éxito!</h3>
+                <p>Gracias por tu interés. Nos pondremos en contacto contigo en las próximas 24 horas.</p>
+            </div>
+        </div>
+    </section>
+
+    
+    <section class="info-adicional">
+        <div class="container-info">
+            <h2>¿Tienes Preguntas?</h2>
+            <div class="beneficios-grid">
+                <div class="beneficio">
+                    <h3>Atención Telefónica</h3>
+                    <p>Llámanos al +34 600 00 00 00 de lunes a viernes de 9:00 a 20:00.</p>
+                </div>
+                <div class="beneficio">
+                    <h3>WhatsApp</h3>
+                    <p>Chatea con nosotros directamente. Respuesta inmediata en horario laboral.</p>
+                </div>
+                <div class="beneficio">
+                    <h3>Email</h3>
+                    <p>Escríbenos a info@nordika.com y te responderemos en 24 horas.</p>
+                </div>
+                <div class="beneficio">
+                    <h3>Datos Seguros</h3>
+                    <p>Tu información está protegida y solo será utilizada para gestionar tu reserva.</p>
+                </div>
+                <div class="beneficio">
+                    <h3>Respuesta Rápida</h3>
+                    <p>Confirmación de disponibilidad en menos de 2 horas durante horario laboral.</p>
+                </div>
+                <div class="beneficio">
+                    <h3>Asesoría Gratuita</h3>
+                    <p>Te ayudamos a elegir el mejor itinerario sin ningún costo adicional.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <footer class="footer" id="redes">
+        <div class="container">
+            <h4>CONTÁCTANOS</h4>
+            
+            <div class="redes mb-4" style="border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 2rem;">
+                <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="red-social" aria-label="WhatsApp" style="background: #25D366; border: none; text-decoration: none;">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=nordikaagency@gmail.com&su=Interesado%20en%20sus%20servicios" target="_blank" rel="noopener noreferrer" class="red-social" aria-label="Gmail" style="background: #EA4335; border: none; text-decoration: none;">
+                    <i class="fas fa-envelope"></i> Gmail
+                </a>
+            </div>
+            <h4 style="font-size: 1rem;">SÍGUENOS EN REDES SOCIALES</h4>
+            <div class="redes">
+                <a href="https://www.facebook.com/share/17dEhU7KvS/" target="_blank" rel="noopener noreferrer" class="red-social" aria-label="Facebook"><i class="fab fa-facebook"></i> Facebook</a>
+                <a href="https://www.instagram.com/nordika_viajes?igsh=a3VwaTE2c25iOWNw" target="_blank" rel="noopener noreferrer" class="red-social" aria-label="Instagram"><i class="fab fa-instagram"></i> Instagram</a>
+                <a href="https://www.youtube.com/@Nordikaagency" target="_blank" rel="noopener noreferrer" class="red-social" aria-label="YouTube"><i class="fab fa-youtube"></i> YouTube</a>
+                <a href="https://www.linkedin.com/in/nordika-agency-7502a5397?trk=universal-search-cluster" target="_blank" rel="noopener noreferrer" class="red-social" aria-label="LinkedIn"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            </div>
+            <p class="mt-4" style="opacity: 0.8; font-size: 0.9rem;">© 2025 Nordika - Agencia de Viajes Nórdicos. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    
+    <button class="scroll-to-top" aria-label="Volver arriba" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</button>
+
+    
+    <script src="../JS/main.js"></script>
+</body>
+</html>
