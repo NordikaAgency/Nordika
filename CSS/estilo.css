@@ -819,9 +819,9 @@ img {
 
 @media (max-width: 768px) {
     .flecha {
-        width: 35px;
-        height: 35px;
-        font-size: 1rem;
+        width: 44px;
+        height: 44px;
+        font-size: 1.2rem;
     }
     
     .flecha-izquierda {
@@ -849,13 +849,13 @@ img {
     }
     
     .indicador {
-        width: 7px;
-        height: 7px;
+        width: 9px;
+        height: 9px;
     }
     
     .indicador.activo {
-        width: 24px;
-        height: 7px;
+        width: 30px;
+        height: 9px;
     }
 }
 
