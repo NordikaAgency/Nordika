@@ -410,9 +410,6 @@ function initChatbot() {
             "Somos Nordika, especialistas en viajes nórdicos con más de 15 años de experiencia. ¿En qué puedo ayudarte hoy?",
             "Nordika ofrece viajes personalizados a los países nórdicos. Tenemos un 98% de satisfacción y más de 2500 viajeros felices. ¿Qué te interesa?"
         ],
-         glee: [
-            "quinn es la mejor❤️" 
-        ],
         default: [
             "Gracias por tu mensaje. Puedo ayudarte con información sobre nuestros destinos (Suecia, Noruega, Dinamarca, Finlandia, Islandia), precios, la aurora boreal, o cómo contactarnos. ¿Qué te gustaría saber?",
             "Entiendo tu pregunta. Para ayudarte mejor, ¿podrías contarme si te interesa algún destino específico, precios, o información de contacto?",
@@ -435,11 +432,6 @@ function initChatbot() {
             return botResponses.despedida[Math.floor(Math.random() * botResponses.despedida.length)];
         }
 
-         if (msg.match(/(glee)/i) ||
-            msgNormalized.match(/(glee)/i)) {
-            return botResponses.glee[Math.floor(Math.random() * botResponses.glee.length)];
-        }
-        
         if (msg.match(/\b(estocolmo|stockholm)\b/i) || msgNormalized.match(/\b(estocolmo|stockholm)\b/i)) {
             return botResponses.estocolmo[Math.floor(Math.random() * botResponses.estocolmo.length)];
         }
