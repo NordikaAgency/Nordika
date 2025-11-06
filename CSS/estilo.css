@@ -61,7 +61,6 @@
     box-sizing: border-box;           
 }
 
-/* Ajustes base del documento y tipografía */
 html {
     scroll-behavior: smooth;           
     font-size: 13.3px;                
@@ -73,7 +72,6 @@ html {
 
 
 
-/* Reseteo y baseline tipográfico del body */
 body {
     font-family: 'Montserrat', 'Segoe UI', sans-serif;  
     color: var(--color-dark);
@@ -213,11 +211,6 @@ img {
     }
 }
 
-/*
-   Navbar (sticky):
-   - Se fija en el tope (position: sticky)
-   - Aplica sombra y transición para microinteracción
-*/
 .navbar {
     position: sticky;                 
     top: 0;
@@ -482,7 +475,6 @@ img {
 
 
 
-/* Decoración animada sutil del hero (gradientes en movimiento) */
 .hero-section::before {
     content: '';
     position: absolute;
@@ -673,7 +665,6 @@ img {
     filter: brightness(1.1) saturate(1.1);
 }
 
-/* En móviles, mostrar siempre las flechas sin hover */
 @media (max-width: 768px) {
     .flecha {
         opacity: 1;
@@ -892,29 +883,7 @@ img {
     box-shadow: 0 2px 8px rgba(212, 175, 55, 0.5);
 }
 
-@media (max-width: 768px) {
-    .slide-label {
-        font-size: 1rem;
-        padding: 10px 20px;
-        bottom: 60px;
-    }
-    
-    .carrusel-indicadores {
-        bottom: 20px;
-        padding: 8px 14px;
-        gap: 6px;
-    }
-    
-    .indicador {
-        width: 10px;
-        height: 10px;
-    }
-    
-    .indicador.activo {
-        width: 32px;
-        height: 10px;
-    }
-}
+
 
 @media (max-width: 480px) {
     .flecha {
@@ -961,7 +930,6 @@ img {
     }
 }
 
-/* Media query para pantallas extra pequeñas */
 @media (max-width: 360px) {
     .carrusel {
         height: 260px;
@@ -2404,7 +2372,6 @@ textarea.form-control {
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
 }
 
-/* Responsive para stats-section */
 @media (max-width: 1024px) {
     .stats-container {
         grid-template-columns: repeat(2, 1fr);
@@ -2673,7 +2640,6 @@ textarea.form-control {
     padding: var(--spacing-xxl) var(--spacing-md);
 }
 
-/* Nosotros - Hero */
 .nosotros-hero {
     background: var(--gradient-primary);
     background-size: cover;
@@ -2708,7 +2674,6 @@ textarea.form-control {
     filter: drop-shadow(0 10px 25px rgba(0,0,0,0.25));
 }
 
-/* Nosotros - tarjetas e info */
 .info-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -2736,7 +2701,6 @@ textarea.form-control {
     margin-bottom: var(--spacing-sm);
 }
 
-/* Valores */
 .valores-container {
     margin-top: var(--spacing-xxl);
     background: var(--gradient-light);
@@ -2771,7 +2735,6 @@ textarea.form-control {
     margin-bottom: var(--spacing-sm);
 }
 
-/* Ubicación */
 .ubicacion-card {
     margin-top: var(--spacing-xxl);
     background: #fff;
@@ -2806,7 +2769,6 @@ textarea.form-control {
 
 .como-llegar-icon { font-size: 1.4rem; margin-bottom: 6px; }
 
-/* Valores pequeños */
 .valores-small-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 200px));
@@ -2915,7 +2877,6 @@ textarea.form-control {
     border-radius: var(--radius-full);
 }
 
-/* CTA */
 .cta-section {
     text-align: center;
     background: var(--gradient-light);
@@ -2937,7 +2898,6 @@ textarea.form-control {
 
 
 
-/* Animaciones simples */
 .fade-in-element { opacity: 0; animation: fadeInUp 0.6s ease 0.1s forwards; }
 
 @media (max-width: 768px) {
@@ -3309,11 +3269,8 @@ textarea.form-control {
     }
 }
 
-/* ============================================
-   MEJORAS RESPONSIVE ADICIONALES
-   ============================================ */
+ 
 
-/* Grid de Reseñas - Breakpoint intermedio para tablets */
 @media (max-width: 1024px) and (min-width: 769px) {
     .reseñas-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -3389,7 +3346,6 @@ textarea.form-control {
     }
 }
 
-/* Grid de Beneficios - Responsive */
 @media (max-width: 1024px) {
     .beneficios-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -3408,7 +3364,6 @@ textarea.form-control {
     }
 }
 
-/* Grid de Valores - Responsive */
 @media (max-width: 1024px) {
     .valores-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -3438,7 +3393,6 @@ textarea.form-control {
     }
 }
 
-/* Navbar - Mejoras móviles pequeñas */
 @media (max-width: 480px) {
     .navbar-container {
         padding: var(--spacing-sm) var(--spacing-md);
@@ -3493,7 +3447,6 @@ textarea.form-control {
     }
 }
 
-/* Footer Newsletter - Mejoras móviles */
 @media (max-width: 768px) {
     .newsletter-section {
         padding: var(--spacing-xl) var(--spacing-md);
@@ -3531,7 +3484,6 @@ textarea.form-control {
     }
 }
 
-/* Imágenes de Cards - Responsive mejorado */
 @media (max-width: 768px) {
     .gallery_img {
         height: 200px;
@@ -3563,7 +3515,6 @@ textarea.form-control {
     }
 }
 
-/* Scroll to Top - Posición móvil */
 @media (max-width: 768px) {
     .scroll-to-top {
         bottom: 20px;
@@ -3584,7 +3535,6 @@ textarea.form-control {
     }
 }
 
-/* Contenedores - Padding consistente */
 @media (max-width: 768px) {
     .container,
     .container-info,
@@ -3603,7 +3553,6 @@ textarea.form-control {
     }
 }
 
-/* Footer - Ajustes generales */
 @media (max-width: 768px) {
     .footer {
         padding: var(--spacing-xl) var(--spacing-md);
@@ -3655,7 +3604,6 @@ textarea.form-control {
     }
 }
 
-/* Info Grid (Nosotros) - Responsive */
 @media (max-width: 768px) {
     .info-grid {
         grid-template-columns: 1fr;
@@ -3667,7 +3615,6 @@ textarea.form-control {
     }
 }
 
-/* Como Llegar Grid - Responsive */
 @media (max-width: 768px) {
     .como-llegar-grid {
         grid-template-columns: 1fr;
@@ -3675,14 +3622,12 @@ textarea.form-control {
     }
 }
 
-/* Ubicación Grid - Responsive */
 @media (max-width: 1024px) {
     .ubicacion-grid {
         grid-template-columns: 1fr;
     }
 }
 
-/* Destinos Header - Mejoras móviles */
 @media (max-width: 480px) {
     .destinos-header {
         padding: var(--spacing-md) var(--spacing-sm);
@@ -3697,7 +3642,6 @@ textarea.form-control {
     }
 }
 
-/* Hero Buttons - Ajuste adicional */
 @media (max-width: 480px) {
     .hero-buttons {
         width: 100%;
@@ -3710,7 +3654,6 @@ textarea.form-control {
     }
 }
 
-/* Prevenir overflow horizontal en móviles */
 @media (max-width: 768px) {
     body {
         overflow-x: hidden;
@@ -3727,7 +3670,6 @@ textarea.form-control {
     }
 }
 
-/* Mejoras para hover en dispositivos táctiles */
 @media (hover: none) {
     .Viajes:hover .gallery_img {
         transform: none;
@@ -3746,7 +3688,6 @@ textarea.form-control {
         transform: none;
     }
     
-    /* Desactivar efectos hover del carrusel en touch */
     .slide a:hover img {
         transform: none;
         filter: none;
@@ -3767,33 +3708,31 @@ textarea.form-control {
     }
 }
 
-/* Correcciones de apilamiento y espaciado en móviles para evitar solapamientos */
 @media (max-width: 768px) {
     .destinos-header,
     .contenido-principal,
     .stats-section,
     .reseñas-section,
     .inspiracion-section {
-        position: relative; /* asegurar contexto sin crear capas encima del footer */
-        z-index: auto;      /* resetear z-index que podría causar solapamiento sobre el footer */
+    position: relative;
+    z-index: auto;
     }
 
     .reseñas-section {
-        margin-bottom: var(--spacing-xl); /* más aire después de reseñas en móviles */
-        padding-bottom: calc(var(--spacing-xxl)); /* padding evita colapso de márgenes y asegura espacio real */
+    margin-bottom: var(--spacing-xl);
+    padding-bottom: calc(var(--spacing-xxl));
     }
 
     .inspiracion-section {
-        margin-top: var(--spacing-xl);    /* separar de la sección anterior (reseñas) */
-        margin-bottom: var(--spacing-xl); /* dar respiro visual antes del footer */
+    margin-top: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
     }
 
     .footer .newsletter-section {
-        margin-top: var(--spacing-xl); /* separar newsletter del bloque anterior en vistas pequeñas */
+    margin-top: var(--spacing-xl);
     }
 }
 
-/* Refuerzo en móviles muy pequeños: más espacio aún para legibilidad */
 @media (max-width: 480px) {
     .reseñas-section {
         padding-bottom: calc(var(--spacing-xxl) + var(--spacing-md));
@@ -3802,11 +3741,6 @@ textarea.form-control {
         margin-top: calc(var(--spacing-xxl));
     }
 }
-
-/* ============================================
-   CHATBOT - Estilos específicos
-   ============================================ */
-
 #chatbot-container {
     position: fixed;
     bottom: 100px;
@@ -3853,7 +3787,7 @@ textarea.form-control {
     border-radius: 50%;
     border: 3px solid var(--color-white);
     animation: pulse-notification 2s ease-in-out infinite;
-    display: none; /* Se puede activar programáticamente si es necesario */
+    display: none;
 }
 
 @keyframes pulse-notification {
@@ -4125,7 +4059,6 @@ textarea.form-control {
     transform: none;
 }
 
-/* Responsive para chatbot */
 @media (max-width: 768px) {
     #chatbot-container {
         bottom: 90px;
